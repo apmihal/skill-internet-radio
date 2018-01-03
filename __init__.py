@@ -40,6 +40,13 @@ class InternetRadioSkill(MycroftSkill):
         self.process = None
 
     def initialize(self):
+        """
+            Added Ersatz Radio to test adding stations
+        """
+        intent = IntentBuilder("ErsatzRadioIntent").require(
+             "ErsatzRadioKeyword").build()
+        self.register_intent(intent, self.handle_ersatz_intent)
+
         intent = IntentBuilder("InternetRadioIntent").require(
              "InternetRadioKeyword").build()
         self.register_intent(intent, self.handle_intent)
@@ -155,6 +162,16 @@ class InternetRadioSkill(MycroftSkill):
 
         if AudioService:
             self.audioservice = AudioService(self.emitter)
+
+    def handle_ersatz_intent(self, message):
+           self.stop()
+           self.speak_dialog('internet.radio')
+           time.sleep(4)
+
+           if self.audioservice:
+               self.audioservice.play(self.settings['ersatz_station_url'])
+           else: # othervice use normal mp3 playback
+               self.process = play_mp3(self.settings['ersatz_station_url'])
 
     def handle_psytube_intent(self, message):
         self.stop()
@@ -351,7 +368,7 @@ class InternetRadioSkill(MycroftSkill):
                self.audioservice.play(self.settings['rock_station_url'])
            else: # othervice use normal mp3 playback
                self.process = play_mp3(self.settings['rock_station_url'])
-    
+
     def handle_classical_intent(self, message):
            self.stop()
            self.speak_dialog('internet.radio')
@@ -401,7 +418,7 @@ class InternetRadioSkill(MycroftSkill):
                self.audioservice.play(self.settings['favorite_station_url'])
            else: # othervice use normal mp3 playback
                self.process = play_mp3(self.settings['favorite_station_url'])
-             
+
     def handle_childrens_intent(self, message):
            self.stop()
            self.speak_dialog('internet.radio')
@@ -411,7 +428,7 @@ class InternetRadioSkill(MycroftSkill):
                self.audioservice.play(self.settings['childrens_station_url'])
            else: # othervice use normal mp3 playback
                self.process = play_mp3(self.settings['childrens_station_url'])
-             
+
     def handle_stop(self, message):
         self.stop()
         self.speak_dialog('internet.radio.stop')

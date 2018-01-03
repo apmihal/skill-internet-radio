@@ -221,6 +221,17 @@
                         "value": "http://www.psytube.at:10120/"
                     }
                 ]
+            },
+            {
+                "name": "Ersatz Radio URL",
+                "fields": [
+                    {
+                        "name": "ersatz_radio_url",
+                        "type": "text",
+                        "label": "Ersatz Radio URL",
+                        "value": "http://uk5.internet-radio.com:8049/live"
+                    }
+                ]
             }
         ]
     }

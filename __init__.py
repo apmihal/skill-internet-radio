@@ -169,9 +169,9 @@ class InternetRadioSkill(MycroftSkill):
            time.sleep(4)
 
            if self.audioservice:
-               self.audioservice.play(self.settings['ersatz_station_url'])
+               self.audioservice.play(self.settings['ersatz_radio_station_url'])
            else: # othervice use normal mp3 playback
-               self.process = play_mp3(self.settings['ersatz_station_url'])
+               self.process = play_mp3(self.settings['ersatz_radio_station_url'])
 
     def handle_psytube_intent(self, message):
         self.stop()

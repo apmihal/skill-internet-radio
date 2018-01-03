@@ -223,12 +223,12 @@
                 ]
             },
             {
-                "name": "Ersatz Radio URL",
+                "name": "Ersatz Radio Station URL",
                 "fields": [
                     {
-                        "name": "ersatz_radio_url",
+                        "name": "ersatz_radio_station_url",
                         "type": "text",
-                        "label": "Ersatz Radio URL",
+                        "label": "Ersatz Radio Station URL",
                         "value": "http://uk5.internet-radio.com:8049/live"
                     }
                 ]

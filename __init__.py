@@ -45,7 +45,7 @@ class InternetRadioSkill(MycroftSkill):
         """
         intent = IntentBuilder("ErsatzRadioIntent").require(
              "ErsatzRadioKeyword").build()
-        self.register_intent(intent, self.handle_ersatz_intent)
+        self.register_intent(intent, self.handle_ersatz_radio_intent)
 
         intent = IntentBuilder("InternetRadioIntent").require(
              "InternetRadioKeyword").build()
@@ -163,7 +163,7 @@ class InternetRadioSkill(MycroftSkill):
         if AudioService:
             self.audioservice = AudioService(self.emitter)
 
-    def handle_ersatz_intent(self, message):
+    def handle_ersatz_radio_intent(self, message):
            self.stop()
            self.speak_dialog('internet.radio')
            time.sleep(4)
